@@ -1,6 +1,15 @@
-let checkForSpam = message => {
-  message = message.toLowerCase();
-  return message.includes('sale') || message.includes('spam') ? true : false;
+let filterArray = (numbers, value) => {
+  const arr = [];
+  for (const ch of numbers) {
+    if (ch > value) {
+      arr.push(ch);
+    }
+  }
+  return arr;
 };
 
-console.log(checkForSpam('[SPAM] How to earn fast money?'));
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
